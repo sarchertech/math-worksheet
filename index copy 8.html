@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Chalkboard', 'Marker Felt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Comic Sans MS', 'Chalkboard', cursive;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
@@ -89,27 +89,6 @@
         .score-row {
             display: flex;
             justify-content: flex-start;
-        }
-
-        .highlight-match {
-            animation: highlight-pulse 0.5s ease-in-out 3;
-            background: rgba(255, 215, 0, 0.5);
-            border-radius: 8px;
-            padding: 2px 4px;
-        }
-
-        @keyframes highlight-pulse {
-
-            0%,
-            100% {
-                transform: scale(1);
-                background: rgba(255, 215, 0, 0.5);
-            }
-
-            50% {
-                transform: scale(1.2);
-                background: rgba(255, 215, 0, 0.8);
-            }
         }
 
         .emoji {
@@ -241,30 +220,6 @@
             background: #90EE90;
         }
 
-        @keyframes success-shake {
-
-            0%,
-            100% {
-                transform: scale(1);
-            }
-
-            25% {
-                transform: scale(1.02);
-            }
-
-            50% {
-                transform: scale(0.99);
-            }
-
-            75% {
-                transform: scale(1.01);
-            }
-        }
-
-        .success-shake {
-            animation: success-shake 0.4s ease-in-out;
-        }
-
         @keyframes mega-shake {
 
             0%,
@@ -338,165 +293,6 @@
                 transform: scale(1) rotate(0deg);
             }
         }
-
-        @keyframes ultra-spin {
-            0% {
-                transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1);
-                filter: brightness(1);
-            }
-
-            12.5% {
-                transform: perspective(1000px) rotateY(180deg) rotateX(10deg) scale(1.15);
-                filter: brightness(1.3);
-            }
-
-            25% {
-                transform: perspective(1000px) rotateY(360deg) rotateX(-10deg) scale(1);
-                filter: brightness(1);
-            }
-
-            37.5% {
-                transform: perspective(1000px) rotateY(540deg) rotateX(10deg) scale(1.15);
-                filter: brightness(1.3);
-            }
-
-            50% {
-                transform: perspective(1000px) rotateY(720deg) rotateX(-10deg) scale(1);
-                filter: brightness(1);
-            }
-
-            62.5% {
-                transform: perspective(1000px) rotateY(900deg) rotateX(10deg) scale(1.15);
-                filter: brightness(1.3);
-            }
-
-            75% {
-                transform: perspective(1000px) rotateY(1080deg) rotateX(-10deg) scale(1);
-                filter: brightness(1);
-            }
-
-            87.5% {
-                transform: perspective(1000px) rotateY(1260deg) rotateX(5deg) scale(1.1);
-                filter: brightness(1.2);
-            }
-
-            100% {
-                transform: perspective(1000px) rotateY(1440deg) rotateX(0deg) scale(1);
-                filter: brightness(1);
-            }
-        }
-
-        .ultra-spin {
-            animation: ultra-spin 4s ease-in-out, ultra-rainbow 4s ease-in-out;
-        }
-
-        @keyframes ultra-rainbow {
-            0% {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            }
-
-            14% {
-                background: linear-gradient(135deg, #ff0000 0%, #ff7700 100%);
-            }
-
-            28% {
-                background: linear-gradient(135deg, #ff7700 0%, #ffff00 100%);
-            }
-
-            42% {
-                background: linear-gradient(135deg, #00ff00 0%, #00ffff 100%);
-            }
-
-            57% {
-                background: linear-gradient(135deg, #00ffff 0%, #0000ff 100%);
-            }
-
-            71% {
-                background: linear-gradient(135deg, #0000ff 0%, #ff00ff 100%);
-            }
-
-            85% {
-                background: linear-gradient(135deg, #ff00ff 0%, #ff0000 100%);
-            }
-
-            100% {
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            }
-        }
-
-        .ultra-celebrate {
-            animation: ultra-celebrate 4s ease-out;
-        }
-
-        @keyframes ultra-celebrate {
-            0% {
-                transform: scale(0) rotate(0deg);
-                filter: hue-rotate(0deg) brightness(1);
-                text-shadow: 0 0 0 gold;
-            }
-
-            10% {
-                transform: scale(4) rotate(30deg);
-                filter: hue-rotate(60deg) brightness(1.5);
-                text-shadow: 0 0 30px gold, 0 0 60px orange;
-            }
-
-            20% {
-                transform: scale(3) rotate(-20deg);
-                filter: hue-rotate(120deg) brightness(1.3);
-                text-shadow: 0 0 40px gold, 0 0 80px orange;
-            }
-
-            30% {
-                transform: scale(3.5) rotate(25deg);
-                filter: hue-rotate(180deg) brightness(1.5);
-                text-shadow: 0 0 50px gold, 0 0 100px orange;
-            }
-
-            40% {
-                transform: scale(2.5) rotate(-15deg);
-                filter: hue-rotate(240deg) brightness(1.3);
-                text-shadow: 0 0 40px gold, 0 0 80px orange;
-            }
-
-            50% {
-                transform: scale(3) rotate(20deg);
-                filter: hue-rotate(300deg) brightness(1.5);
-                text-shadow: 0 0 50px gold, 0 0 100px orange;
-            }
-
-            60% {
-                transform: scale(2.5) rotate(-10deg);
-                filter: hue-rotate(360deg) brightness(1.3);
-                text-shadow: 0 0 40px gold, 0 0 80px orange;
-            }
-
-            70% {
-                transform: scale(2.8) rotate(15deg);
-                filter: hue-rotate(60deg) brightness(1.4);
-                text-shadow: 0 0 30px gold, 0 0 60px orange;
-            }
-
-            80% {
-                transform: scale(2) rotate(-5deg);
-                filter: hue-rotate(30deg) brightness(1.2);
-                text-shadow: 0 0 20px gold, 0 0 40px orange;
-            }
-
-            90% {
-                transform: scale(1.5) rotate(3deg);
-                filter: hue-rotate(15deg) brightness(1.1);
-                text-shadow: 0 0 10px gold, 0 0 20px orange;
-            }
-
-            100% {
-                transform: scale(1) rotate(0deg);
-                filter: hue-rotate(0deg) brightness(1);
-                text-shadow: 0 0 0 gold;
-            }
-        }
-        }
-        }
     </style>
 </head>
 
@@ -518,10 +314,9 @@
         const maxAttempts = 3;
         let earnedEmojis = [];
         let earnedHearts = [];
-        let earnedTrophies = [];
 
         // const happyEmojis = ['🌟', '⭐', '🎉', '🎊', '👏', '🥳', '😊', '🤩', '💪', '🏆'];
-        const happyEmojis = ['⭐', '🎉', '🥳', '💪', '🌈'];
+        const happyEmojis = ['⭐', '🎉', '🥳', '💪', '🏆'];
         const sadEmojis = ['🤔', '💭', '🙃'];
         const confettiEmojis = ['🎉', '🎊', '⭐', '✨', '💫', '🌈', '🎈', '🎁', '💖', '🦋'];
 
@@ -530,10 +325,6 @@
         function getAudioContext() {
             if (!audioContext) {
                 audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            // Resume if suspended (required after user interaction)
-            if (audioContext.state === 'suspended') {
-                audioContext.resume();
             }
             return audioContext;
         }
@@ -665,147 +456,16 @@
                 emojiEl.classList.remove('mega-celebrate');
                 document.body.classList.remove('mega-shake');
             }, 2500);
-
-            // Check for heart upgrade after mega celebration
-            setTimeout(() => {
-                if (earnedHearts.length >= 3) {
-                    highlightMatchingHearts();
-                    setTimeout(() => {
-                        checkForHeartUpgrade();
-                        triggerUltraCelebration();
-                        updateScore();
-                    }, 1500);
-                }
-            }, 2600);
-        }
-
-        function createUltraConfetti() {
-            const ultraEmojis = ['🏆', '👑', '🌟', '✨', '💫', '🌈', '🎉', '🎊', '💎', '🥇', '🌟', '💥', '⭐', '🎆'];
-            // First wave - explosion from center
-            for (let i = 0; i < 100; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.textContent = ultraEmojis[Math.floor(Math.random() * ultraEmojis.length)];
-                    confetti.style.left = (40 + Math.random() * 20) + 'vw';
-                    confetti.style.top = '40vh';
-                    confetti.style.fontSize = (2 + Math.random() * 3) + 'rem';
-                    confetti.style.animationDuration = (2 + Math.random() * 2) + 's';
-                    document.body.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 6000);
-                }, i * 15);
-            }
-            // Second wave - rain from top
-            for (let i = 0; i < 150; i++) {
-                setTimeout(() => {
-                    const confetti = document.createElement('div');
-                    confetti.className = 'confetti';
-                    confetti.textContent = ultraEmojis[Math.floor(Math.random() * ultraEmojis.length)];
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.top = '-50px';
-                    confetti.style.fontSize = (2 + Math.random() * 4) + 'rem';
-                    confetti.style.animationDuration = (2.5 + Math.random() * 2.5) + 's';
-                    document.body.appendChild(confetti);
-                    setTimeout(() => confetti.remove(), 7000);
-                }, 500 + i * 20);
-            }
-        }
-
-        function playUltraSuccessSound() {
-            const ctx = getAudioContext();
-            // Epic fanfare melody
-            const notes = [523, 523, 784, 784, 1047, 1047, 784, 1047, 1319, 1568, 1319, 1568, 2093, 1568, 2093, 2637, 2093, 2637, 3136];
-
-            // Play main melody
-            notes.forEach((freq, i) => {
-                const oscillator = ctx.createOscillator();
-                const gainNode = ctx.createGain();
-
-                oscillator.connect(gainNode);
-                gainNode.connect(ctx.destination);
-
-                oscillator.type = i % 3 === 0 ? 'sine' : i % 3 === 1 ? 'triangle' : 'square';
-                oscillator.frequency.setValueAtTime(freq, ctx.currentTime + (i * 0.15));
-
-                gainNode.gain.setValueAtTime(0.25, ctx.currentTime + (i * 0.15));
-                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + (i * 0.15) + 0.4);
-
-                oscillator.start(ctx.currentTime + (i * 0.15));
-                oscillator.stop(ctx.currentTime + (i * 0.15) + 0.4);
-            });
-
-            // Add bass notes for depth
-            const bassNotes = [131, 165, 196, 262, 196, 262, 330];
-            bassNotes.forEach((freq, i) => {
-                const oscillator = ctx.createOscillator();
-                const gainNode = ctx.createGain();
-
-                oscillator.connect(gainNode);
-                gainNode.connect(ctx.destination);
-
-                oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(freq, ctx.currentTime + (i * 0.4));
-
-                gainNode.gain.setValueAtTime(0.3, ctx.currentTime + (i * 0.4));
-                gainNode.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + (i * 0.4) + 0.6);
-
-                oscillator.start(ctx.currentTime + (i * 0.4));
-                oscillator.stop(ctx.currentTime + (i * 0.4) + 0.6);
-            });
-        }
-
-        function triggerUltraCelebration() {
-            const emojiEl = document.getElementById('emoji');
-            emojiEl.textContent = '🏆';
-            emojiEl.classList.add('ultra-celebrate');
-            document.body.classList.add('ultra-spin');
-            createUltraConfetti();
-            playUltraSuccessSound();
-
-            setTimeout(() => {
-                emojiEl.classList.remove('ultra-celebrate');
-                document.body.classList.remove('ultra-spin');
-            }, 5000);
-        }
-
-        function highlightMatchingHearts() {
-            const scoreEl = document.getElementById('score');
-            const rows = scoreEl.querySelectorAll('.score-row');
-
-            rows.forEach(row => {
-                if (row.textContent.includes('❤️')) {
-                    const spans = row.querySelectorAll('span');
-                    if (spans.length === 0) return;
-
-                    const labelSpan = spans[0].outerHTML;
-                    if (earnedHearts.length >= 3) {
-                        let heartHtml = `<span class="highlight-match">❤️❤️❤️</span>`;
-                        if (earnedHearts.length > 3) {
-                            heartHtml += '❤️'.repeat(earnedHearts.length - 3);
-                        }
-                        row.innerHTML = labelSpan + heartHtml;
-                    }
-                }
-            });
-        }
-
-        function checkForHeartUpgrade() {
-            if (earnedHearts.length >= 3) {
-                earnedHearts.splice(0, 3);
-                earnedTrophies.push('🏆');
-                return true;
-            }
-            return false;
         }
 
         function checkForUpgrade(emoji) {
             // Count how many of this emoji we have
             const count = earnedEmojis.filter(e => e === emoji).length;
-            if (count >= 3) {
+            if (count >= 2) {
                 // Remove 2 of this emoji
                 let removed = 0;
                 earnedEmojis = earnedEmojis.filter(e => {
-                    if (e === emoji && removed < 3) {
+                    if (e === emoji && removed < 2) {
                         removed++;
                         return false;
                     }
@@ -865,40 +525,27 @@
                 emojiEl.textContent = selectedEmoji;
                 emojiEl.classList.add('celebrate');
                 problemEl.classList.add('bounce');
-                document.body.classList.add('success-shake');
                 createConfetti();
 
                 // Check for upgrade after a short delay
-                const willUpgrade = earnedEmojis.filter(e => e === selectedEmoji).length >= 3;
-
-                if (willUpgrade) {
-                    // Highlight the matching emojis first
-                    setTimeout(() => {
-                        highlightMatchingEmojis(selectedEmoji);
-                    }, 800);
-
-                    // Then do the upgrade after showing the highlight
-                    setTimeout(() => {
-                        if (checkForUpgrade(selectedEmoji)) {
-                            triggerMegaCelebration();
-                            updateScore();
-                        }
-                    }, 2300);
-                }
+                setTimeout(() => {
+                    if (checkForUpgrade(selectedEmoji)) {
+                        triggerMegaCelebration();
+                        updateScore();
+                    }
+                }, 800);
 
                 setTimeout(() => {
                     emojiEl.classList.remove('celebrate');
                     problemEl.classList.remove('bounce');
-                    document.body.classList.remove('success-shake');
                 }, 600);
                 updateScore();
 
                 // Generate new problem after a short delay
-                const willUpgradeDelay = earnedEmojis.filter(e => e === selectedEmoji).length >= 3;
                 setTimeout(() => {
                     problemEl.classList.remove('success-highlight');
                     generateProblem();
-                }, willUpgradeDelay ? 5000 : 1500);
+                }, 1500);
             } else {
                 attempts++;
 
@@ -929,33 +576,6 @@
             }
         }
 
-        function highlightMatchingEmojis(emoji) {
-            const scoreEl = document.getElementById('score');
-            const rows = scoreEl.querySelectorAll('.score-row');
-
-            rows.forEach(row => {
-                // Find the row for this emoji type
-                if (row.textContent.startsWith(emoji)) {
-                    // Get the earned emojis part (after the separator)
-                    const spans = row.querySelectorAll('span');
-                    if (spans.length === 0) return;
-
-                    // Rebuild the row with highlighted emojis
-                    const labelSpan = spans[0].outerHTML;
-                    const emojiCount = earnedEmojis.filter(e => e === emoji).length;
-
-                    if (emojiCount >= 3) {
-                        // Wrap the first 3 emojis in highlight spans
-                        let emojiHtml = `<span class="highlight-match">${emoji}${emoji}${emoji}</span>`;
-                        if (emojiCount > 3) {
-                            emojiHtml += emoji.repeat(emojiCount - 3);
-                        }
-                        row.innerHTML = labelSpan + emojiHtml;
-                    }
-                }
-            });
-        }
-
         function updateScore() {
             const scoreEl = document.getElementById('score');
 
@@ -971,16 +591,8 @@
             // Create rows for each possible emoji type
             scoreEl.innerHTML = '';
 
-            // Show trophies first if any
-            if (earnedTrophies.length > 0) {
-                const trophyRow = document.createElement('div');
-                trophyRow.className = 'score-row';
-                trophyRow.innerHTML = `<span style="opacity: 0.5; padding-right: 8px">🏆 |</span>${'🏆'.repeat(earnedTrophies.length)}`;
-                scoreEl.appendChild(trophyRow);
-            }
-
-            // Show hearts if any
-            if (earnedHearts.length > 0 || earnedTrophies.length > 0) {
+            // Show hearts first if any
+            if (earnedHearts.length > 0) {
                 const heartRow = document.createElement('div');
                 heartRow.className = 'score-row';
                 heartRow.innerHTML = `<span style="opacity: 0.5; padding-right: 8px">❤️ |</span>${'❤️'.repeat(earnedHearts.length)}`;
@@ -1000,89 +612,6 @@
         createButtons();
         generateProblem();
         updateScore();
-
-        // Console commands for testing
-        window.addEmoji = function (emoji) {
-            if (!emoji) {
-                console.log('Available emojis:', happyEmojis.join(' '));
-                console.log('Usage: addEmoji("⭐") or addEmoji("🎉")');
-                return;
-            }
-            const emojiEl = document.getElementById('emoji');
-            earnedEmojis.push(emoji);
-
-            // Play success animation
-            playSuccessSound();
-            emojiEl.textContent = emoji;
-            emojiEl.classList.add('celebrate');
-            document.body.classList.add('success-shake');
-            createConfetti();
-
-            setTimeout(() => {
-                emojiEl.classList.remove('celebrate');
-                document.body.classList.remove('success-shake');
-            }, 600);
-
-            updateScore();
-
-            // Check for upgrade
-            const willUpgrade = earnedEmojis.filter(e => e === emoji).length >= 3;
-            if (willUpgrade) {
-                setTimeout(() => {
-                    highlightMatchingEmojis(emoji);
-                }, 800);
-                setTimeout(() => {
-                    if (checkForUpgrade(emoji)) {
-                        triggerMegaCelebration();
-                        updateScore();
-                    }
-                }, 2300);
-            }
-
-            console.log('Added', emoji, '| Total:', earnedEmojis.filter(e => e === emoji).length);
-        };
-        window.addHeart = function () {
-            const emojiEl = document.getElementById('emoji');
-            earnedHearts.push('❤️');
-
-            // Play mega animation
-            emojiEl.textContent = '❤️';
-            emojiEl.classList.add('mega-celebrate');
-            document.body.classList.add('mega-shake');
-            createMegaConfetti();
-            playMegaSuccessSound();
-
-            setTimeout(() => {
-                emojiEl.classList.remove('mega-celebrate');
-                document.body.classList.remove('mega-shake');
-            }, 2500);
-
-            updateScore();
-
-            // Check for trophy upgrade
-            if (earnedHearts.length >= 3) {
-                setTimeout(() => {
-                    highlightMatchingHearts();
-                }, 2600);
-                setTimeout(() => {
-                    checkForHeartUpgrade();
-                    triggerUltraCelebration();
-                    updateScore();
-                }, 4100);
-            }
-
-            console.log('Added ❤️ | Total:', earnedHearts.length);
-        };
-        window.addTrophy = function () {
-            const emojiEl = document.getElementById('emoji');
-            earnedTrophies.push('🏆');
-
-            // Play ultra animation
-            triggerUltraCelebration();
-            updateScore();
-
-            console.log('Added 🏆 | Total:', earnedTrophies.length);
-        };
     </script>
 </body>
 

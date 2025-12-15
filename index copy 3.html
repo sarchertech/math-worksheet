@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Worksheet</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #764ba2;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .problem {
+            font-size: 4rem;
+            color: #333;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 20px;
+        }
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .answer-btn {
+            font-size: 2rem;
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+
+        .answer-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .answer-btn:active {
+            transform: scale(0.95);
+        }
+
+        .score {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #666;
+            height: 2rem;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-top: 10px;
+            height: 4rem;
+            line-height: 4rem;
+        }
+
+        .celebrate {
+            animation: celebrate 0.6s ease-out;
+        }
+
+        @keyframes celebrate {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            70% {
+                transform: scale(0.9);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .bounce {
+            animation: bounce 0.5s ease;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            25% {
+                transform: scale(1.2);
+            }
+
+            50% {
+                transform: scale(0.9);
+            }
+
+            75% {
+                transform: scale(1.1);
+            }
+        }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+            font-size: 2rem;
+            animation: confetti-fall 1.5s ease-out forwards;
+            z-index: 1000;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(400px) rotate(720deg) scale(0);
+            }
+        }
+
+        @keyframes wiggle {
+
+            0%,
+            100% {
+                transform: rotate(0deg);
+            }
+
+            25% {
+                transform: rotate(-10deg);
+            }
+
+            75% {
+                transform: rotate(10deg);
+            }
+        }
+
+        .wiggle {
+            animation: wiggle 0.3s ease-in-out 3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🧮 ➕ 🎉</h1>
+        <div class="problem" id="problem"></div>
+        <div class="buttons-grid" id="buttons"></div>
+        <div class="emoji" id="emoji"></div>
+        <div class="score" id="score"></div>
+    </div>
+
+    <script>
+        let num1, num2, correctAnswer;
+        let correctCount = 0;
+        let totalCount = 0;
+
+        const happyEmojis = ['🌟', '⭐', '🎉', '🎊', '👏', '🥳', '😊', '🤩', '💪', '🏆'];
+        const sadEmojis = ['🤔', '💭', '🙃'];
+        const confettiEmojis = ['🎉', '🎊', '⭐', '✨', '💫', '🌈', '🎈', '🎁', '💖', '🦋'];
+
+        function createConfetti() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.textContent = confettiEmojis[Math.floor(Math.random() * confettiEmojis.length)];
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-50px';
+                    confetti.style.animationDuration = (1 + Math.random()) + 's';
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 2000);
+                }, i * 50);
+            }
+        }
+
+        function generateProblem() {
+            // Generate numbers where sum is 10 or less
+            num1 = Math.floor(Math.random() * 10) + 1; // 1-10
+            const maxNum2 = 10 - num1;
+            if (maxNum2 < 1) {
+                num1 = Math.floor(Math.random() * 9) + 1; // 1-9
+            }
+            num2 = Math.floor(Math.random() * Math.min(maxNum2, 10)) + 1; // 1 to (10 - num1)
+
+            // Ensure sum is 10 or less
+            if (num1 + num2 > 10) {
+                generateProblem();
+                return;
+            }
+
+            correctAnswer = num1 + num2;
+
+            document.getElementById('problem').textContent = `${num1} + ${num2} = ?`;
+            document.getElementById('emoji').textContent = '';
+        }
+
+        function createButtons() {
+            const buttonsContainer = document.getElementById('buttons');
+            buttonsContainer.innerHTML = '';
+
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'answer-btn';
+                btn.textContent = i;
+                btn.onclick = () => checkAnswer(i);
+                buttonsContainer.appendChild(btn);
+            }
+        }
+
+        function checkAnswer(selected) {
+            totalCount++;
+            const emojiEl = document.getElementById('emoji');
+
+            if (selected === correctAnswer) {
+                correctCount++;
+                emojiEl.textContent = happyEmojis[Math.floor(Math.random() * happyEmojis.length)];
+                emojiEl.classList.add('celebrate');
+                document.getElementById('problem').classList.add('bounce');
+                createConfetti();
+                setTimeout(() => {
+                    emojiEl.classList.remove('celebrate');
+                    document.getElementById('problem').classList.remove('bounce');
+                }, 600);
+                updateScore();
+
+                // Generate new problem after a short delay
+                setTimeout(generateProblem, 1500);
+            } else {
+                emojiEl.textContent = sadEmojis[Math.floor(Math.random() * sadEmojis.length)];
+                document.getElementById('problem').classList.add('wiggle');
+                setTimeout(() => {
+                    document.getElementById('problem').classList.remove('wiggle');
+                    emojiEl.textContent = '';
+                }, 900);
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = '⭐'.repeat(correctCount);
+        }
+
+        // Initialize
+        createButtons();
+        generateProblem();
+    </script>
+</body>
+
+</html>

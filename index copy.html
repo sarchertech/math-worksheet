@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Worksheet</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Chalkboard', cursive;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #764ba2;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .problem {
+            font-size: 4rem;
+            color: #333;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 20px;
+        }
+
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .answer-btn {
+            font-size: 2rem;
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-family: inherit;
+        }
+
+        .answer-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        .answer-btn:active {
+            transform: scale(0.95);
+        }
+
+        .feedback {
+            font-size: 2rem;
+            margin-top: 20px;
+            min-height: 50px;
+            padding: 10px;
+        }
+
+        .correct {
+            color: #28a745;
+        }
+
+        .incorrect {
+            color: #dc3545;
+        }
+
+        .score {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        .emoji {
+            font-size: 3rem;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🧮 Math Fun! 🎉</h1>
+        <div class="problem" id="problem"></div>
+        <div class="buttons-grid" id="buttons"></div>
+        <div class="feedback" id="feedback"></div>
+        <div class="emoji" id="emoji"></div>
+        <div class="score" id="score"></div>
+    </div>
+
+    <script>
+        let num1, num2, correctAnswer;
+        let correctCount = 0;
+        let totalCount = 0;
+
+        const happyEmojis = ['🌟', '⭐', '🎉', '🎊', '👏', '🥳', '😊', '🤩', '💪', '🏆'];
+        const sadEmojis = ['🤔', '💭', '🙃'];
+
+        function generateProblem() {
+            // Generate numbers where sum is 10 or less
+            num1 = Math.floor(Math.random() * 10) + 1; // 1-10
+            const maxNum2 = 10 - num1;
+            if (maxNum2 < 1) {
+                num1 = Math.floor(Math.random() * 9) + 1; // 1-9
+            }
+            num2 = Math.floor(Math.random() * Math.min(maxNum2, 10)) + 1; // 1 to (10 - num1)
+
+            // Ensure sum is 10 or less
+            if (num1 + num2 > 10) {
+                generateProblem();
+                return;
+            }
+
+            correctAnswer = num1 + num2;
+
+            document.getElementById('problem').textContent = `${num1} + ${num2} = ?`;
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('emoji').textContent = '';
+        }
+
+        function createButtons() {
+            const buttonsContainer = document.getElementById('buttons');
+            buttonsContainer.innerHTML = '';
+
+            for (let i = 1; i <= 10; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'answer-btn';
+                btn.textContent = i;
+                btn.onclick = () => checkAnswer(i);
+                buttonsContainer.appendChild(btn);
+            }
+        }
+
+        function checkAnswer(selected) {
+            totalCount++;
+            const feedbackEl = document.getElementById('feedback');
+            const emojiEl = document.getElementById('emoji');
+
+            if (selected === correctAnswer) {
+                correctCount++;
+                feedbackEl.textContent = 'Correct! Great job!';
+                feedbackEl.className = 'feedback correct';
+                emojiEl.textContent = happyEmojis[Math.floor(Math.random() * happyEmojis.length)];
+            } else {
+                feedbackEl.textContent = `Not quite! ${num1} + ${num2} = ${correctAnswer}`;
+                feedbackEl.className = 'feedback incorrect';
+                emojiEl.textContent = sadEmojis[Math.floor(Math.random() * sadEmojis.length)];
+            }
+
+            updateScore();
+
+            // Generate new problem after a short delay
+            setTimeout(generateProblem, 1500);
+        }
+
+        function updateScore() {
+            document.getElementById('score').textContent = `Score: ${correctCount} out of ${totalCount}`;
+        }
+
+        // Initialize
+        createButtons();
+        generateProblem();
+    </script>
+</body>
+
+</html>
