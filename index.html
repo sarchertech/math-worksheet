@@ -939,6 +939,35 @@
         let earnedGoldMedals = [];
         let earnedCrowns = [];
 
+        // Save progress to localStorage
+        function saveProgress() {
+            const progress = {
+                earnedEmojis,
+                earnedHearts,
+                earnedTrophies,
+                earnedGoldMedals,
+                earnedCrowns
+            };
+            localStorage.setItem('mathWorksheetProgress', JSON.stringify(progress));
+        }
+
+        // Load progress from localStorage
+        function loadProgress() {
+            const saved = localStorage.getItem('mathWorksheetProgress');
+            if (saved) {
+                try {
+                    const progress = JSON.parse(saved);
+                    earnedEmojis = progress.earnedEmojis || [];
+                    earnedHearts = progress.earnedHearts || [];
+                    earnedTrophies = progress.earnedTrophies || [];
+                    earnedGoldMedals = progress.earnedGoldMedals || [];
+                    earnedCrowns = progress.earnedCrowns || [];
+                } catch (e) {
+                    console.log('Could not load saved progress');
+                }
+            }
+        }
+
         // const happyEmojis = ['🌟', '⭐', '🎉', '🎊', '👏', '🥳', '😊', '🤩', '💪', '🏆'];
         const happyEmojis = ['⭐', '🎉', '🥳', '💪', '🌈'];
         const sadEmojis = ['🤔', '💭', '🙃'];
@@ -1970,9 +1999,13 @@
                 row.innerHTML = `<span style="opacity: 0.5; padding-right: 8px">${emoji} |</span>${emoji.repeat(count)}`;
                 scoreEl.appendChild(row);
             });
+
+            // Save progress after every update
+            saveProgress();
         }
 
         // Initialize
+        loadProgress();
         createButtons();
         generateProblem();
         updateScore();
@@ -2094,6 +2127,18 @@
         document.addEventListener('dblclick', function (event) {
             event.preventDefault();
         }, { passive: false });
+
+        // Clear all progress
+        window.clearProgress = function () {
+            earnedEmojis = [];
+            earnedHearts = [];
+            earnedTrophies = [];
+            earnedGoldMedals = [];
+            earnedCrowns = [];
+            localStorage.removeItem('mathWorksheetProgress');
+            updateScore();
+            console.log('All progress cleared!');
+        };
     </script>
 </body>
 
