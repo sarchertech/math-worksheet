@@ -914,6 +914,99 @@
                 box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             }
         }
+
+        .dev-popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dev-popup-overlay.show {
+            display: flex;
+        }
+
+        .dev-popup {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 350px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .dev-popup h2 {
+            margin-bottom: 20px;
+            color: #764ba2;
+            font-size: 1.5rem;
+        }
+
+        .dev-popup-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .dev-btn {
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+
+        .dev-btn:active {
+            transform: scale(0.95);
+        }
+
+        .dev-btn-star {
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            color: white;
+        }
+
+        .dev-btn-heart {
+            background: linear-gradient(135deg, #ff6b6b, #ee5253);
+            color: white;
+        }
+
+        .dev-btn-trophy {
+            background: linear-gradient(135deg, #ffd700, #b8860b);
+            color: white;
+        }
+
+        .dev-btn-medal {
+            background: linear-gradient(135deg, #ffd700, #daa520);
+            color: white;
+        }
+
+        .dev-btn-crown {
+            background: linear-gradient(135deg, #9b59b6, #8e44ad);
+            color: white;
+        }
+
+        .dev-btn-clear {
+            background: linear-gradient(135deg, #636e72, #2d3436);
+            color: white;
+        }
+
+        .dev-btn-close {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            margin-top: 10px;
+        }
+
+        .dev-btn-view-errors {
+            background: linear-gradient(135deg, #fdcb6e, #e17055);
+            color: white;
+        }
     </style>
 </head>
 
@@ -924,6 +1017,22 @@
         <div class="buttons-grid" id="buttons"></div>
         <div class="emoji" id="emoji"></div>
         <div class="score" id="score"></div>
+    </div>
+
+    <div class="dev-popup-overlay" id="devPopup">
+        <div class="dev-popup">
+            <h2>🛠️ Dev Menu 🛠️</h2>
+            <div class="dev-popup-buttons">
+                <button class="dev-btn dev-btn-star" onclick="devAddStar()">⭐ Add Star</button>
+                <button class="dev-btn dev-btn-heart" onclick="devAddHeart()">❤️ Add Heart</button>
+                <button class="dev-btn dev-btn-trophy" onclick="devAddTrophy()">🏆 Add Trophy</button>
+                <button class="dev-btn dev-btn-medal" onclick="devAddGoldMedal()">🥇 Add Gold Medal</button>
+                <button class="dev-btn dev-btn-crown" onclick="devAddCrown()">👑 Add Crown</button>
+                <button class="dev-btn dev-btn-view-errors" onclick="devViewErrors()">📋 View Wrong Attempts</button>
+                <button class="dev-btn dev-btn-clear" onclick="devClearProgress()">🗑️ Clear Progress</button>
+                <button class="dev-btn dev-btn-close" onclick="closeDevPopup()">✖️ Close</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -938,6 +1047,7 @@
         let earnedTrophies = [];
         let earnedGoldMedals = [];
         let earnedCrowns = [];
+        let wrongAttempts = [];
 
         // Save progress to localStorage
         function saveProgress() {
@@ -946,7 +1056,8 @@
                 earnedHearts,
                 earnedTrophies,
                 earnedGoldMedals,
-                earnedCrowns
+                earnedCrowns,
+                wrongAttempts
             };
             localStorage.setItem('mathWorksheetProgress', JSON.stringify(progress));
         }
@@ -962,6 +1073,7 @@
                     earnedTrophies = progress.earnedTrophies || [];
                     earnedGoldMedals = progress.earnedGoldMedals || [];
                     earnedCrowns = progress.earnedCrowns || [];
+                    wrongAttempts = progress.wrongAttempts || [];
                 } catch (e) {
                     console.log('Could not load saved progress');
                 }
@@ -1837,6 +1949,9 @@
         }
 
         function checkAnswer(selected) {
+            // Track secret code for dev popup
+            trackSecretCode(selected);
+
             if (isLocked) return;
 
             totalCount++;
@@ -1890,6 +2005,15 @@
                 }, willUpgradeDelay ? 5000 : 1500);
             } else {
                 attempts++;
+
+                // Log the wrong attempt
+                wrongAttempts.push({
+                    problem: `${num1} + ${num2}`,
+                    correctAnswer: correctAnswer,
+                    chosenAnswer: selected,
+                    timestamp: new Date().toISOString()
+                });
+                saveProgress();
 
                 if (attempts >= maxAttempts) {
                     // Out of tries - strong failure
@@ -2135,10 +2259,117 @@
             earnedTrophies = [];
             earnedGoldMedals = [];
             earnedCrowns = [];
+            wrongAttempts = [];
             localStorage.removeItem('mathWorksheetProgress');
             updateScore();
             console.log('All progress cleared!');
         };
+
+        // View wrong attempts log
+        window.viewWrongAttempts = function () {
+            if (wrongAttempts.length === 0) {
+                console.log('No wrong attempts recorded!');
+                return;
+            }
+            console.log(`Wrong attempts (${wrongAttempts.length} total):`);
+            wrongAttempts.forEach((attempt, i) => {
+                console.log(`${i + 1}. ${attempt.problem} = ${attempt.correctAnswer} (chose ${attempt.chosenAnswer})`);
+            });
+            return wrongAttempts;
+        };
+
+        // Dev popup secret code tracking
+        const secretCode = [8, 9, 6];
+        let codeBuffer = [];
+        let codeTimeout = null;
+
+        function trackSecretCode(num) {
+            // Clear timeout and reset if more than 2 seconds passed
+            if (codeTimeout) {
+                clearTimeout(codeTimeout);
+            }
+
+            codeBuffer.push(num);
+
+            // Only keep last 3 presses
+            if (codeBuffer.length > 3) {
+                codeBuffer.shift();
+            }
+
+            // Check if code matches
+            if (codeBuffer.length === 3 &&
+                codeBuffer[0] === secretCode[0] &&
+                codeBuffer[1] === secretCode[1] &&
+                codeBuffer[2] === secretCode[2]) {
+                openDevPopup();
+                codeBuffer = [];
+            }
+
+            // Reset buffer after 2 seconds of inactivity
+            codeTimeout = setTimeout(() => {
+                codeBuffer = [];
+            }, 2000);
+        }
+
+        function openDevPopup() {
+            document.getElementById('devPopup').classList.add('show');
+        }
+
+        function closeDevPopup() {
+            document.getElementById('devPopup').classList.remove('show');
+        }
+
+        // Dev popup button handlers
+        function devAddStar() {
+            closeDevPopup();
+            window.addEmoji('⭐');
+        }
+
+        function devAddHeart() {
+            closeDevPopup();
+            window.addHeart();
+        }
+
+        function devAddTrophy() {
+            closeDevPopup();
+            window.addTrophy();
+        }
+
+        function devAddGoldMedal() {
+            closeDevPopup();
+            window.addGoldMedal();
+        }
+
+        function devAddCrown() {
+            closeDevPopup();
+            window.addCrown();
+        }
+
+        function devViewErrors() {
+            const attempts = window.viewWrongAttempts();
+            if (attempts && attempts.length > 0) {
+                alert(`Wrong attempts: ${attempts.length}\n\n` +
+                    attempts.slice(-10).map((a, i) =>
+                        `${a.problem} = ${a.correctAnswer} (chose ${a.chosenAnswer})`
+                    ).join('\n'));
+            } else {
+                alert('No wrong attempts recorded!');
+            }
+        }
+
+        function devClearProgress() {
+            if (confirm('Clear all progress?')) {
+                closeDevPopup();
+                window.clearProgress();
+            }
+        }
+
+        // Close dev popup when clicking overlay
+        document.getElementById('devPopup').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeDevPopup();
+            }
+        });
     </script>
 </body>
 
