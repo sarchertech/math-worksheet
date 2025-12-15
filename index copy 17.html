@@ -830,90 +830,6 @@
                 text-shadow: 0 0 0 gold;
             }
         }
-
-        .container-explode {
-            animation: container-explode 6s ease-out forwards !important;
-        }
-
-        @keyframes container-explode {
-            0% {
-                transform: scale(1) rotate(0deg);
-                border-radius: 30px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            }
-
-            3% {
-                transform: scale(1.3) rotate(2deg);
-                border-radius: 40px;
-                box-shadow: 0 0 100px rgba(255, 215, 0, 0.8), 0 0 200px rgba(255, 107, 107, 0.6);
-            }
-
-            8% {
-                transform: scale(1.5) rotate(-3deg);
-                border-radius: 50px;
-                box-shadow: 0 0 150px rgba(255, 215, 0, 1), 0 0 300px rgba(78, 205, 196, 0.8), 0 0 400px rgba(155, 89, 182, 0.6);
-            }
-
-            15% {
-                transform: scale(1.8) rotate(4deg);
-                border-radius: 60px;
-                box-shadow: 0 0 200px rgba(255, 215, 0, 1), 0 0 400px rgba(255, 107, 107, 0.9), 0 0 500px rgba(78, 205, 196, 0.7);
-            }
-
-            25% {
-                transform: scale(2) rotate(-2deg);
-                border-radius: 80px;
-                box-shadow: 0 0 250px rgba(255, 215, 0, 1), 0 0 450px rgba(155, 89, 182, 0.9), 0 0 600px rgba(78, 205, 196, 0.8);
-            }
-
-            35% {
-                transform: scale(1.9) rotate(3deg);
-                border-radius: 70px;
-                box-shadow: 0 0 220px rgba(255, 215, 0, 0.95), 0 0 400px rgba(255, 107, 107, 0.85);
-            }
-
-            45% {
-                transform: scale(1.7) rotate(-1deg);
-                border-radius: 60px;
-                box-shadow: 0 0 180px rgba(255, 215, 0, 0.9), 0 0 350px rgba(78, 205, 196, 0.8);
-            }
-
-            55% {
-                transform: scale(1.5) rotate(2deg);
-                border-radius: 50px;
-                box-shadow: 0 0 150px rgba(255, 215, 0, 0.8), 0 0 280px rgba(155, 89, 182, 0.7);
-            }
-
-            65% {
-                transform: scale(1.35) rotate(-1deg);
-                border-radius: 45px;
-                box-shadow: 0 0 120px rgba(255, 215, 0, 0.7), 0 0 200px rgba(255, 107, 107, 0.6);
-            }
-
-            75% {
-                transform: scale(1.2) rotate(1deg);
-                border-radius: 40px;
-                box-shadow: 0 0 80px rgba(255, 215, 0, 0.5), 0 0 150px rgba(78, 205, 196, 0.4);
-            }
-
-            85% {
-                transform: scale(1.1) rotate(-0.5deg);
-                border-radius: 35px;
-                box-shadow: 0 0 50px rgba(255, 215, 0, 0.3), 0 0 100px rgba(155, 89, 182, 0.2);
-            }
-
-            95% {
-                transform: scale(1.03) rotate(0.2deg);
-                border-radius: 32px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            }
-
-            100% {
-                transform: scale(1) rotate(0deg);
-                border-radius: 30px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            }
-        }
     </style>
 </head>
 
@@ -1653,18 +1569,15 @@
 
         function triggerMultiversalCelebration() {
             const emojiEl = document.getElementById('emoji');
-            const containerEl = document.querySelector('.container');
             emojiEl.textContent = '👑';
             emojiEl.classList.add('multiversal-celebrate');
             document.body.classList.add('multiversal-shake');
-            containerEl.classList.add('container-explode');
             createMultiversalConfetti();
             playMultiversalSuccessSound();
 
             setTimeout(() => {
                 emojiEl.classList.remove('multiversal-celebrate');
                 document.body.classList.remove('multiversal-shake');
-                containerEl.classList.remove('container-explode');
             }, 6000);
         }
 

@@ -648,78 +648,63 @@
 
         .multiversal-shake {
             background: linear-gradient(45deg,
-                    #ff6b6b, #ff9f43, #feca57, #48dbfb, #0abde3, #a55eea, #fd79a8,
-                    #ff6b6b, #ff9f43, #feca57, #48dbfb, #0abde3, #a55eea, #fd79a8,
-                    gold, #f8f9fa, gold) !important;
-            background-size: 600% 600% !important;
-            animation: multiversal-warp 0.4s ease-in-out infinite, multiversal-colors 2s ease-in-out infinite !important;
+                    #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3,
+                    #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3,
+                    gold, #fff, gold) !important;
+            background-size: 1000% 1000% !important;
+            animation: multiversal-warp 0.15s linear infinite, multiversal-colors 0.2s linear infinite !important;
         }
 
         @keyframes multiversal-warp {
             0% {
-                transform: scale(1) rotate(0deg) translateY(0px);
-            }
-
-            10% {
-                transform: scale(1.03) rotate(1.5deg) translateY(-8px);
+                transform: scale(1) rotate(0deg) skew(0deg);
             }
 
             20% {
-                transform: scale(0.98) rotate(-1deg) translateY(5px);
-            }
-
-            30% {
-                transform: scale(1.02) rotate(1deg) translateY(-6px);
+                transform: scale(1.03) rotate(2deg) skew(2deg);
             }
 
             40% {
-                transform: scale(0.99) rotate(-1.5deg) translateY(8px);
-            }
-
-            50% {
-                transform: scale(1.03) rotate(0.5deg) translateY(-10px);
+                transform: scale(0.97) rotate(-2deg) skew(-2deg);
             }
 
             60% {
-                transform: scale(0.98) rotate(-0.5deg) translateY(6px);
-            }
-
-            70% {
-                transform: scale(1.02) rotate(1deg) translateY(-5px);
+                transform: scale(1.02) rotate(1deg) skew(1deg);
             }
 
             80% {
-                transform: scale(0.99) rotate(-1deg) translateY(7px);
-            }
-
-            90% {
-                transform: scale(1.01) rotate(0.5deg) translateY(-4px);
+                transform: scale(0.98) rotate(-1deg) skew(-1deg);
             }
 
             100% {
-                transform: scale(1) rotate(0deg) translateY(0px);
+                transform: scale(1) rotate(0deg) skew(0deg);
             }
         }
 
         @keyframes multiversal-colors {
             0% {
                 background-position: 0% 50%;
-                filter: hue-rotate(0deg) brightness(1.05);
+                filter: hue-rotate(0deg);
             }
 
-            33% {
-                background-position: 50% 100%;
-                filter: hue-rotate(60deg) brightness(1.1);
+            25% {
+                background-position: 50% 0%;
+                filter: hue-rotate(90deg);
             }
 
-            66% {
+            50% {
                 background-position: 100% 50%;
-                filter: hue-rotate(120deg) brightness(1.05);
+                filter: hue-rotate(180deg);
+            }
+
+            75% {
+                background-position: 50% 100%;
+                filter: hue-rotate(270deg);
             }
 
             100% {
                 background-position: 0% 50%;
-                filter: hue-rotate(0deg) brightness(1.05);
+                filter: hue-rotate(360deg);
             }
         }
 
@@ -730,188 +715,80 @@
         @keyframes multiversal-celebrate {
             0% {
                 transform: scale(0) rotate(0deg) translateY(0);
-                filter: hue-rotate(0deg) brightness(1) saturate(1);
+                filter: hue-rotate(0deg) brightness(1) saturate(1) blur(0px);
                 text-shadow: 0 0 0 gold;
             }
 
             3% {
-                transform: scale(10) rotate(360deg) translateY(-100px);
-                filter: hue-rotate(30deg) brightness(1.8) saturate(1.6);
-                text-shadow: 0 0 150px gold, 0 0 250px #ff6b6b, 0 0 350px #4ecdc4;
+                transform: scale(8) rotate(720deg) translateY(-30px);
+                filter: hue-rotate(180deg) brightness(3) saturate(3) blur(0px);
+                text-shadow: 0 0 150px gold, 0 0 300px #ff6b6b, 0 0 450px #4ecdc4, 0 0 600px #9b59b6;
             }
 
             8% {
-                transform: scale(8) rotate(720deg) translateY(60px);
-                filter: hue-rotate(60deg) brightness(1.6) saturate(1.5);
-                text-shadow: 0 0 120px gold, 0 0 200px #ff6b6b;
-            }
-
-            14% {
-                transform: scale(9) rotate(1080deg) translateY(-120px);
-                filter: hue-rotate(90deg) brightness(1.7) saturate(1.5);
-                text-shadow: 0 0 140px gold, 0 0 220px #4ecdc4, 0 0 300px #9b59b6;
-            }
-
-            20% {
-                transform: scale(7) rotate(1440deg) translateY(80px);
-                filter: hue-rotate(120deg) brightness(1.6) saturate(1.4);
-                text-shadow: 0 0 110px gold, 0 0 180px #ff6b6b;
-            }
-
-            26% {
-                transform: scale(8.5) rotate(1800deg) translateY(-90px);
-                filter: hue-rotate(150deg) brightness(1.7) saturate(1.5);
-                text-shadow: 0 0 130px gold, 0 0 210px #9b59b6, 0 0 280px #4ecdc4;
-            }
-
-            32% {
-                transform: scale(6.5) rotate(2160deg) translateY(70px);
-                filter: hue-rotate(180deg) brightness(1.5) saturate(1.4);
-                text-shadow: 0 0 100px gold, 0 0 170px #ff6b6b;
-            }
-
-            38% {
-                transform: scale(7.5) rotate(2520deg) translateY(-110px);
-                filter: hue-rotate(210deg) brightness(1.6) saturate(1.4);
-                text-shadow: 0 0 120px gold, 0 0 190px #4ecdc4, 0 0 250px #ff6b6b;
-            }
-
-            44% {
-                transform: scale(6) rotate(2880deg) translateY(50px);
-                filter: hue-rotate(240deg) brightness(1.5) saturate(1.3);
-                text-shadow: 0 0 90px gold, 0 0 150px #9b59b6;
-            }
-
-            50% {
-                transform: scale(7) rotate(3240deg) translateY(-80px);
-                filter: hue-rotate(270deg) brightness(1.6) saturate(1.4);
-                text-shadow: 0 0 110px gold, 0 0 180px #ff6b6b;
-            }
-
-            56% {
-                transform: scale(5.5) rotate(3600deg) translateY(60px);
-                filter: hue-rotate(290deg) brightness(1.5) saturate(1.3);
-                text-shadow: 0 0 90px gold, 0 0 150px #4ecdc4;
-            }
-
-            64% {
-                transform: scale(5) rotate(3960deg) translateY(-60px);
-                filter: hue-rotate(310deg) brightness(1.4) saturate(1.3);
-                text-shadow: 0 0 80px gold, 0 0 130px #ff6b6b;
-            }
-
-            72% {
-                transform: scale(4) rotate(4320deg) translateY(40px);
-                filter: hue-rotate(330deg) brightness(1.35) saturate(1.2);
-                text-shadow: 0 0 65px gold, 0 0 110px #9b59b6;
-            }
-
-            80% {
-                transform: scale(3) rotate(4680deg) translateY(-35px);
-                filter: hue-rotate(345deg) brightness(1.25) saturate(1.15);
-                text-shadow: 0 0 50px gold, 0 0 85px #4ecdc4;
-            }
-
-            88% {
-                transform: scale(2) rotate(5040deg) translateY(20px);
-                filter: hue-rotate(355deg) brightness(1.15) saturate(1.1);
-                text-shadow: 0 0 35px gold;
-            }
-
-            94% {
-                transform: scale(1.3) rotate(5400deg) translateY(-10px);
-                filter: hue-rotate(358deg) brightness(1.08) saturate(1.05);
-                text-shadow: 0 0 20px gold;
-            }
-
-            100% {
-                transform: scale(1) rotate(5760deg) translateY(0);
-                filter: hue-rotate(360deg) brightness(1) saturate(1);
-                text-shadow: 0 0 0 gold;
-            }
-        }
-
-        .container-explode {
-            animation: container-explode 6s ease-out forwards !important;
-        }
-
-        @keyframes container-explode {
-            0% {
-                transform: scale(1) rotate(0deg);
-                border-radius: 30px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            }
-
-            3% {
-                transform: scale(1.3) rotate(2deg);
-                border-radius: 40px;
-                box-shadow: 0 0 100px rgba(255, 215, 0, 0.8), 0 0 200px rgba(255, 107, 107, 0.6);
-            }
-
-            8% {
-                transform: scale(1.5) rotate(-3deg);
-                border-radius: 50px;
-                box-shadow: 0 0 150px rgba(255, 215, 0, 1), 0 0 300px rgba(78, 205, 196, 0.8), 0 0 400px rgba(155, 89, 182, 0.6);
+                transform: scale(6) rotate(1440deg) translateY(-60px);
+                filter: hue-rotate(360deg) brightness(4) saturate(4) blur(2px);
+                text-shadow: 0 0 200px gold, 0 0 400px #ff6b6b, 0 0 600px #4ecdc4;
             }
 
             15% {
-                transform: scale(1.8) rotate(4deg);
-                border-radius: 60px;
-                box-shadow: 0 0 200px rgba(255, 215, 0, 1), 0 0 400px rgba(255, 107, 107, 0.9), 0 0 500px rgba(78, 205, 196, 0.7);
+                transform: scale(7) rotate(2160deg) translateY(-40px);
+                filter: hue-rotate(540deg) brightness(3) saturate(3) blur(0px);
+                text-shadow: 0 0 180px gold, 0 0 360px #ff6b6b;
             }
 
             25% {
-                transform: scale(2) rotate(-2deg);
-                border-radius: 80px;
-                box-shadow: 0 0 250px rgba(255, 215, 0, 1), 0 0 450px rgba(155, 89, 182, 0.9), 0 0 600px rgba(78, 205, 196, 0.8);
+                transform: scale(8) rotate(2880deg) translateY(-70px);
+                filter: hue-rotate(720deg) brightness(4) saturate(4) blur(3px);
+                text-shadow: 0 0 250px gold, 0 0 500px #ff6b6b, 0 0 750px #4ecdc4, 0 0 1000px #9b59b6;
             }
 
             35% {
-                transform: scale(1.9) rotate(3deg);
-                border-radius: 70px;
-                box-shadow: 0 0 220px rgba(255, 215, 0, 0.95), 0 0 400px rgba(255, 107, 107, 0.85);
+                transform: scale(6) rotate(3600deg) translateY(-50px);
+                filter: hue-rotate(900deg) brightness(3.5) saturate(3.5) blur(1px);
+                text-shadow: 0 0 200px gold, 0 0 400px #ff6b6b;
             }
 
             45% {
-                transform: scale(1.7) rotate(-1deg);
-                border-radius: 60px;
-                box-shadow: 0 0 180px rgba(255, 215, 0, 0.9), 0 0 350px rgba(78, 205, 196, 0.8);
+                transform: scale(7) rotate(4320deg) translateY(-60px);
+                filter: hue-rotate(1080deg) brightness(4) saturate(4) blur(2px);
+                text-shadow: 0 0 220px gold, 0 0 440px #ff6b6b, 0 0 660px #4ecdc4;
             }
 
             55% {
-                transform: scale(1.5) rotate(2deg);
-                border-radius: 50px;
-                box-shadow: 0 0 150px rgba(255, 215, 0, 0.8), 0 0 280px rgba(155, 89, 182, 0.7);
+                transform: scale(5) rotate(5040deg) translateY(-45px);
+                filter: hue-rotate(1260deg) brightness(3) saturate(3) blur(0px);
+                text-shadow: 0 0 180px gold, 0 0 360px #ff6b6b;
             }
 
             65% {
-                transform: scale(1.35) rotate(-1deg);
-                border-radius: 45px;
-                box-shadow: 0 0 120px rgba(255, 215, 0, 0.7), 0 0 200px rgba(255, 107, 107, 0.6);
+                transform: scale(4) rotate(5760deg) translateY(-35px);
+                filter: hue-rotate(1440deg) brightness(2.5) saturate(2.5) blur(0px);
+                text-shadow: 0 0 140px gold, 0 0 280px #ff6b6b;
             }
 
             75% {
-                transform: scale(1.2) rotate(1deg);
-                border-radius: 40px;
-                box-shadow: 0 0 80px rgba(255, 215, 0, 0.5), 0 0 150px rgba(78, 205, 196, 0.4);
+                transform: scale(3) rotate(6480deg) translateY(-25px);
+                filter: hue-rotate(1620deg) brightness(2) saturate(2) blur(0px);
+                text-shadow: 0 0 100px gold, 0 0 200px #ff6b6b;
             }
 
             85% {
-                transform: scale(1.1) rotate(-0.5deg);
-                border-radius: 35px;
-                box-shadow: 0 0 50px rgba(255, 215, 0, 0.3), 0 0 100px rgba(155, 89, 182, 0.2);
+                transform: scale(2) rotate(7020deg) translateY(-15px);
+                filter: hue-rotate(1800deg) brightness(1.5) saturate(1.5) blur(0px);
+                text-shadow: 0 0 60px gold;
             }
 
             95% {
-                transform: scale(1.03) rotate(0.2deg);
-                border-radius: 32px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                transform: scale(1.2) rotate(7160deg) translateY(-5px);
+                filter: hue-rotate(1980deg) brightness(1.2) saturate(1.2) blur(0px);
+                text-shadow: 0 0 30px gold;
             }
 
             100% {
-                transform: scale(1) rotate(0deg);
-                border-radius: 30px;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+                transform: scale(1) rotate(7200deg) translateY(0);
+                filter: hue-rotate(0deg) brightness(1) saturate(1) blur(0px);
+                text-shadow: 0 0 0 gold;
             }
         }
     </style>
@@ -1444,227 +1321,128 @@
         function playMultiversalSuccessSound() {
             const ctx = getAudioContext();
 
-            // ===== PHASE 1: REALITY SHATTER - Massive dissonant chord explosion =====
-            const shatterChord = [55, 110, 147, 220, 294, 440, 587, 880, 1175, 1760, 2349, 3520];
-            shatterChord.forEach((freq, idx) => {
+            // COSMIC OPENING - massive multi-octave chord explosion
+            const cosmicChord = [65, 131, 196, 262, 330, 392, 523, 659, 784, 1047, 1319, 1568];
+            cosmicChord.forEach((freq, idx) => {
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
                 osc.connect(gain);
                 gain.connect(ctx.destination);
-                osc.type = 'sawtooth';
+                osc.type = idx % 2 === 0 ? 'sawtooth' : 'square';
                 osc.frequency.setValueAtTime(freq, ctx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(freq * 1.05, ctx.currentTime + 0.1);
-                osc.frequency.exponentialRampToValueAtTime(freq, ctx.currentTime + 0.2);
-                gain.gain.setValueAtTime(0.12, ctx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.5);
+                gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1.2);
                 osc.start(ctx.currentTime);
-                osc.stop(ctx.currentTime + 1.5);
+                osc.stop(ctx.currentTime + 1.2);
             });
 
-            // ===== PHASE 2: DIMENSIONAL RIFT - Sweeping bass through frequencies =====
-            for (let i = 0; i < 8; i++) {
-                const rift = ctx.createOscillator();
-                const riftGain = ctx.createGain();
-                rift.connect(riftGain);
-                riftGain.connect(ctx.destination);
-                rift.type = 'sine';
-                rift.frequency.setValueAtTime(30, ctx.currentTime + i * 0.15);
-                rift.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + i * 0.15 + 0.3);
-                rift.frequency.exponentialRampToValueAtTime(20, ctx.currentTime + i * 0.15 + 0.6);
-                riftGain.gain.setValueAtTime(0.5, ctx.currentTime + i * 0.15);
-                riftGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + i * 0.15 + 0.7);
-                rift.start(ctx.currentTime + i * 0.15);
-                rift.stop(ctx.currentTime + i * 0.15 + 0.7);
+            // SUB BASS EARTHQUAKE
+            for (let i = 0; i < 5; i++) {
+                const subBass = ctx.createOscillator();
+                const subGain = ctx.createGain();
+                subBass.connect(subGain);
+                subGain.connect(ctx.destination);
+                subBass.type = 'sine';
+                subBass.frequency.setValueAtTime(40 + i * 10, ctx.currentTime + i * 0.2);
+                subBass.frequency.exponentialRampToValueAtTime(20, ctx.currentTime + i * 0.2 + 0.5);
+                subGain.gain.setValueAtTime(0.6, ctx.currentTime + i * 0.2);
+                subGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + i * 0.2 + 0.6);
+                subBass.start(ctx.currentTime + i * 0.2);
+                subBass.stop(ctx.currentTime + i * 0.2 + 0.6);
             }
 
-            // ===== PHASE 3: MULTIVERSE COLLISION - Rapid arpeggios across dimensions =====
-            const multiverseArp = [
-                262, 330, 392, 523, 659, 784, 1047, 1319, 1568, 2093, 2637, 3136,
-                3136, 2637, 2093, 1568, 1319, 1047, 784, 659, 523, 392, 330, 262,
-                392, 523, 659, 784, 1047, 1319, 1568, 2093, 2637, 3136, 3951, 4186,
-                4186, 3951, 3136, 2637, 2093, 1568, 1319, 1047, 784, 659, 523, 392
+            // ASCENDING HEAVENLY FANFARE
+            const heavenlyMelody = [
+                392, 523, 659, 784, 1047, 1319, 1568, 2093,
+                2093, 1568, 2093, 2637, 3136, 2637, 3136, 3951,
+                3951, 3136, 3951, 4186, 3951, 4186, 4698, 4186, 4698,
+                5274, 4698, 5274, 5587, 5274, 5587, 6271
             ];
-            multiverseArp.forEach((freq, i) => {
+            heavenlyMelody.forEach((freq, i) => {
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
                 osc.connect(gain);
                 gain.connect(ctx.destination);
-                osc.type = i % 4 === 0 ? 'square' : i % 4 === 1 ? 'sawtooth' : i % 4 === 2 ? 'triangle' : 'sine';
-                osc.frequency.setValueAtTime(freq, ctx.currentTime + 0.3 + (i * 0.05));
-                gain.gain.setValueAtTime(0.18, ctx.currentTime + 0.3 + (i * 0.05));
-                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3 + (i * 0.05) + 0.15);
-                osc.start(ctx.currentTime + 0.3 + (i * 0.05));
-                osc.stop(ctx.currentTime + 0.3 + (i * 0.05) + 0.15);
+                osc.type = i % 3 === 0 ? 'sine' : i % 3 === 1 ? 'triangle' : 'square';
+                osc.frequency.setValueAtTime(freq, ctx.currentTime + 0.5 + (i * 0.08));
+                gain.gain.setValueAtTime(0.2, ctx.currentTime + 0.5 + (i * 0.08));
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5 + (i * 0.08) + 0.2);
+                osc.start(ctx.currentTime + 0.5 + (i * 0.08));
+                osc.stop(ctx.currentTime + 0.5 + (i * 0.08) + 0.2);
             });
 
-            // ===== PHASE 4: COSMIC THUNDER - Rolling bass waves =====
-            const cosmicThunder = [25, 30, 35, 40, 50, 65, 82, 98, 131, 165, 196, 262];
-            cosmicThunder.forEach((freq, i) => {
-                for (let j = 0; j < 3; j++) {
-                    const thunder = ctx.createOscillator();
-                    const thunderGain = ctx.createGain();
-                    thunder.connect(thunderGain);
-                    thunderGain.connect(ctx.destination);
-                    thunder.type = 'sine';
-                    thunder.frequency.setValueAtTime(freq * (1 + j * 0.02), ctx.currentTime + 0.5 + (i * 0.2) + (j * 0.05));
-                    thunderGain.gain.setValueAtTime(0.4, ctx.currentTime + 0.5 + (i * 0.2) + (j * 0.05));
-                    thunderGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5 + (i * 0.2) + (j * 0.05) + 0.4);
-                    thunder.start(ctx.currentTime + 0.5 + (i * 0.2) + (j * 0.05));
-                    thunder.stop(ctx.currentTime + 0.5 + (i * 0.2) + (j * 0.05) + 0.4);
-                }
+            // THUNDERING BASS PROGRESSION
+            const thunderBass = [32, 41, 49, 65, 82, 98, 131, 165, 196, 262, 330, 392, 523, 659, 784];
+            thunderBass.forEach((freq, i) => {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, ctx.currentTime + 0.5 + (i * 0.18));
+                gain.gain.setValueAtTime(0.45, ctx.currentTime + 0.5 + (i * 0.18));
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.5 + (i * 0.18) + 0.3);
+                osc.start(ctx.currentTime + 0.5 + (i * 0.18));
+                osc.stop(ctx.currentTime + 0.5 + (i * 0.18) + 0.3);
             });
 
-            // ===== PHASE 5: REALITY HARMONICS - Ethereal singing tones =====
-            const harmonics = [528, 639, 741, 852, 963, 1074, 1185, 1296];
-            harmonics.forEach((freq, i) => {
-                const harmonic = ctx.createOscillator();
-                const harmonicGain = ctx.createGain();
-                harmonic.connect(harmonicGain);
-                harmonicGain.connect(ctx.destination);
-                harmonic.type = 'sine';
-                harmonic.frequency.setValueAtTime(freq, ctx.currentTime + 1 + (i * 0.25));
-                harmonic.frequency.setValueAtTime(freq * 1.02, ctx.currentTime + 1 + (i * 0.25) + 0.3);
-                harmonic.frequency.setValueAtTime(freq, ctx.currentTime + 1 + (i * 0.25) + 0.6);
-                harmonicGain.gain.setValueAtTime(0.15, ctx.currentTime + 1 + (i * 0.25));
-                harmonicGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 1 + (i * 0.25) + 0.8);
-                harmonic.start(ctx.currentTime + 1 + (i * 0.25));
-                harmonic.stop(ctx.currentTime + 1 + (i * 0.25) + 0.8);
-            });
-
-            // ===== PHASE 6: STAR BIRTH - Massive ascending crescendo =====
-            const starBirth = [
-                131, 165, 196, 262, 330, 392, 523, 659, 784, 1047, 1319, 1568,
-                2093, 2637, 3136, 3951, 4186, 4698, 5274, 5587, 6271, 7040, 7902, 8372
-            ];
-            starBirth.forEach((freq, i) => {
-                const star = ctx.createOscillator();
-                const starGain = ctx.createGain();
-                star.connect(starGain);
-                starGain.connect(ctx.destination);
-                star.type = i < 12 ? 'triangle' : 'sine';
-                star.frequency.setValueAtTime(freq, ctx.currentTime + 2 + (i * 0.07));
-                starGain.gain.setValueAtTime(0.12 + (i * 0.005), ctx.currentTime + 2 + (i * 0.07));
-                starGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 2 + (i * 0.07) + 0.25);
-                star.start(ctx.currentTime + 2 + (i * 0.07));
-                star.stop(ctx.currentTime + 2 + (i * 0.07) + 0.25);
-            });
-
-            // ===== PHASE 7: CELESTIAL RAIN - Endless magical sparkles =====
-            for (let i = 0; i < 80; i++) {
-                const sparkle = ctx.createOscillator();
-                const sparkleGain = ctx.createGain();
-                sparkle.connect(sparkleGain);
-                sparkleGain.connect(ctx.destination);
-                sparkle.type = 'sine';
-                const sparkleFreq = 2500 + Math.random() * 5500;
-                sparkle.frequency.setValueAtTime(sparkleFreq, ctx.currentTime + (i * 0.07));
-                sparkle.frequency.setValueAtTime(sparkleFreq * (0.98 + Math.random() * 0.04), ctx.currentTime + (i * 0.07) + 0.05);
-                sparkleGain.gain.setValueAtTime(0.05 + Math.random() * 0.03, ctx.currentTime + (i * 0.07));
-                sparkleGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + (i * 0.07) + 0.1);
-                sparkle.start(ctx.currentTime + (i * 0.07));
-                sparkle.stop(ctx.currentTime + (i * 0.07) + 0.1);
+            // CELESTIAL SPARKLE SHOWER
+            for (let i = 0; i < 50; i++) {
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.type = 'sine';
+                const sparkleFreq = 3000 + Math.random() * 4000;
+                osc.frequency.setValueAtTime(sparkleFreq, ctx.currentTime + (i * 0.1));
+                gain.gain.setValueAtTime(0.06, ctx.currentTime + (i * 0.1));
+                gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + (i * 0.1) + 0.12);
+                osc.start(ctx.currentTime + (i * 0.1));
+                osc.stop(ctx.currentTime + (i * 0.1) + 0.12);
             }
 
-            // ===== PHASE 8: UNIVERSE CREATION - Epic finale chord =====
+            // MULTIVERSAL FINALE - layered chord explosion
             setTimeout(() => {
-                // Layer 1: Foundation
-                const foundation = [32, 65, 98, 131, 196, 262];
-                foundation.forEach(freq => {
+                const finaleChord = [131, 165, 196, 262, 330, 392, 523, 659, 784, 1047, 1319, 1568, 2093, 2637, 3136];
+                finaleChord.forEach((freq, i) => {
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
                     osc.connect(gain);
                     gain.connect(ctx.destination);
-                    osc.type = 'sine';
+                    osc.type = ['sine', 'triangle', 'sawtooth'][i % 3];
                     osc.frequency.setValueAtTime(freq, ctx.currentTime);
-                    gain.gain.setValueAtTime(0.3, ctx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 3);
-                    osc.start(ctx.currentTime);
-                    osc.stop(ctx.currentTime + 3);
-                });
-
-                // Layer 2: Harmony
-                const harmony = [330, 392, 523, 659, 784, 1047, 1319, 1568];
-                harmony.forEach((freq, i) => {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.connect(gain);
-                    gain.connect(ctx.destination);
-                    osc.type = 'triangle';
-                    osc.frequency.setValueAtTime(freq, ctx.currentTime);
-                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 2.5);
-                    osc.start(ctx.currentTime);
-                    osc.stop(ctx.currentTime + 2.5);
-                });
-
-                // Layer 3: Shimmer
-                const shimmer = [2093, 2637, 3136, 3951, 4186, 4698, 5274];
-                shimmer.forEach(freq => {
-                    const osc = ctx.createOscillator();
-                    const gain = ctx.createGain();
-                    osc.connect(gain);
-                    gain.connect(ctx.destination);
-                    osc.type = 'sine';
-                    osc.frequency.setValueAtTime(freq, ctx.currentTime);
-                    osc.frequency.setValueAtTime(freq * 1.01, ctx.currentTime + 0.5);
-                    osc.frequency.setValueAtTime(freq * 0.99, ctx.currentTime + 1);
-                    osc.frequency.setValueAtTime(freq, ctx.currentTime + 1.5);
-                    gain.gain.setValueAtTime(0.06, ctx.currentTime);
+                    gain.gain.setValueAtTime(0.08, ctx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 2);
                     osc.start(ctx.currentTime);
                     osc.stop(ctx.currentTime + 2);
                 });
 
-                // Layer 4: The Big Bang - final impact
-                const bigBang = ctx.createOscillator();
-                const bigBangGain = ctx.createGain();
-                bigBang.connect(bigBangGain);
-                bigBangGain.connect(ctx.destination);
-                bigBang.type = 'sine';
-                bigBang.frequency.setValueAtTime(40, ctx.currentTime);
-                bigBang.frequency.exponentialRampToValueAtTime(15, ctx.currentTime + 3);
-                bigBangGain.gain.setValueAtTime(0.7, ctx.currentTime);
-                bigBangGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 3);
-                bigBang.start(ctx.currentTime);
-                bigBang.stop(ctx.currentTime + 3);
-            }, 3800);
-
-            // ===== PHASE 9: ECHOES OF INFINITY - Delayed reverberations =====
-            setTimeout(() => {
-                for (let wave = 0; wave < 5; wave++) {
-                    setTimeout(() => {
-                        const echoChord = [262, 392, 523, 784, 1047, 1568];
-                        echoChord.forEach((freq, i) => {
-                            const echo = ctx.createOscillator();
-                            const echoGain = ctx.createGain();
-                            echo.connect(echoGain);
-                            echoGain.connect(ctx.destination);
-                            echo.type = 'sine';
-                            echo.frequency.setValueAtTime(freq, ctx.currentTime);
-                            echoGain.gain.setValueAtTime(0.08 - (wave * 0.015), ctx.currentTime);
-                            echoGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.8);
-                            echo.start(ctx.currentTime);
-                            echo.stop(ctx.currentTime + 0.8);
-                        });
-                    }, wave * 400);
-                }
-            }, 5500);
+                // Final cosmic bass boom
+                const cosmicBass = ctx.createOscillator();
+                const cosmicBassGain = ctx.createGain();
+                cosmicBass.connect(cosmicBassGain);
+                cosmicBassGain.connect(ctx.destination);
+                cosmicBass.type = 'sine';
+                cosmicBass.frequency.setValueAtTime(50, ctx.currentTime);
+                cosmicBass.frequency.exponentialRampToValueAtTime(25, ctx.currentTime + 2);
+                cosmicBassGain.gain.setValueAtTime(0.6, ctx.currentTime);
+                cosmicBassGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 2);
+                cosmicBass.start(ctx.currentTime);
+                cosmicBass.stop(ctx.currentTime + 2);
+            }, 3500);
         }
 
         function triggerMultiversalCelebration() {
             const emojiEl = document.getElementById('emoji');
-            const containerEl = document.querySelector('.container');
             emojiEl.textContent = '👑';
             emojiEl.classList.add('multiversal-celebrate');
             document.body.classList.add('multiversal-shake');
-            containerEl.classList.add('container-explode');
             createMultiversalConfetti();
             playMultiversalSuccessSound();
 
             setTimeout(() => {
                 emojiEl.classList.remove('multiversal-celebrate');
                 document.body.classList.remove('multiversal-shake');
-                containerEl.classList.remove('container-explode');
             }, 6000);
         }
 
