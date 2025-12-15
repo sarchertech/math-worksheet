@@ -1935,13 +1935,11 @@
 
         function generateProblem() {
             if (subtractionMode) {
-                // Subtraction mode: result should be 1-9, both numbers <= 10
-                const result = Math.floor(Math.random() * 9) + 1; // 1 to 9
-                // num2 can be 1 to (10 - result) so that num1 = result + num2 <= 10
-                const maxNum2 = 10 - result;
-                num2 = Math.floor(Math.random() * maxNum2) + 1;
-                num1 = result + num2;
-                correctAnswer = result;
+                // Subtraction mode: pick num1 first for uniform distribution
+                // num1 ranges 2-10 so result can be 1-9
+                num1 = Math.floor(Math.random() * 9) + 2; // 2 to 10
+                num2 = Math.floor(Math.random() * (num1 - 1)) + 1; // 1 to num1-1
+                correctAnswer = num1 - num2; // Result will be 1 to 9
                 document.getElementById('problem').textContent = `${num1} - ${num2} = ?`;
             } else {
                 // Addition mode: First pick the target sum (2-10) uniformly
